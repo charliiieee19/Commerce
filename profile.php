@@ -15,7 +15,7 @@ if(!isset($_SESSION["uid"])){
 		<script src="js/bootstrap.min.js"></script>
 		<script src="main.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="icon" href="icon.ico" type="ico" sizes="16x16">
 	</head>
 <body>
@@ -85,8 +85,17 @@ if(!isset($_SESSION["uid"])){
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
-				<div id="get_category">
+				<br>
+				<div class='dropdown'>
+				  <button class='btn btn-primary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+				    Categories <span class="caret"></span>
+				  </button>
+				  <div class='dropdown-menu' aria-labelledby='dropdownMenuButton' id="get_category">
+				    
+				  </div>
 				</div>
+				<!-- <div id="get_category">
+				</div> -->
 				<!--<div class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#"><h4>Categories</h4></a></li>
 					<li><a href="#">Categories</a></li>
@@ -94,8 +103,15 @@ if(!isset($_SESSION["uid"])){
 					<li><a href="#">Categories</a></li>
 					<li><a href="#">Categories</a></li>
 				</div> -->
-				<div id="get_brand">
+				<div class='dropdown'>
+				  <button class='btn btn-primary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+				    Brands <span class="caret"></span>
+				  </button>
+				  <div class='dropdown-menu' aria-labelledby='dropdownMenuButton' id="get_brand">
+				  </div>
 				</div>
+				<!-- <div id="get_brand">
+				</div> -->
 				<!--<div class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#"><h4>Brand</h4></a></li>
 					<li><a href="#">Categories</a></li>

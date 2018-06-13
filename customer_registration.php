@@ -10,7 +10,7 @@
 		<script src="main.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="icon" href="icon.ico" type="ico" sizes="16x16">
-		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 <body>
 <div class="wait overlay">

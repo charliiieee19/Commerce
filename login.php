@@ -17,6 +17,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 		$row = mysqli_fetch_array($run_query);
 		$_SESSION["uid"] = $row["user_id"];
 		$_SESSION["name"] = $row["first_name"];
+		$_SESSION["level"] = $row["level"];
 		$ip_add = getenv("REMOTE_ADDR");
 		//we have created a cookie in login_form.php page so if that cookie is available means user is not login
 			if (isset($_COOKIE["product_list"])) {
@@ -45,8 +46,13 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 				
 			}
 			//if user is login from page we will send login_success
+			/*if ($_SESSION["level"] == 1) {
+				echo "login_admin";
+				exit();
+			}*/
 			echo "login_success";
 			exit();
+			
 		}else{
 			echo "<span style='color:red;'>Invalid Email or Password.</span>";
 			exit();

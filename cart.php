@@ -12,7 +12,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="main.js"></script>
 		<<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	    <link rel="stylesheet" type="text/css" href="styles.css">
+	    <link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 <body>
 <div class="wait overlay">

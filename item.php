@@ -20,7 +20,7 @@
 			display: block;
 		}
 
-		.zoom img::selection { background-color: transparent; }
+		.zoom img::selection { background-color: white; }
 	</style>
 	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
 	<script src='jquery.zoom.js'></script>
@@ -38,12 +38,12 @@
 						<h4 class='modal-title'>Specifications:</h4>
 						</div>
 						<div class='modal-body'>
-								<h5 class='modal-title'><?php echo $row['product_title']; ?></h5>
+								<h4 class='modal-title' align="center"><?php echo $row['product_title']; ?></h4>
 								<p><br></p>
 								<span class='zoom' id="ex1_<?php echo $row['product_id']; ?>">
-									<img src="product_images/<?php echo $row['product_image']; ?>" style='width:300px; height:300px;'/>
+									<img src="product_images/<?php echo $row['product_image']; ?>" style='width: auto; height: 350px;'/>
 								</span>
-								<p><br></p>
+								<hr>
 								<p><?php echo $row['product_detail']; ?></p>
 						</div>
 						<div class='modal-footer'>
