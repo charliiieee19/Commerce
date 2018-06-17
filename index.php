@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION["uid"])){
-	header("location:profile.php");
+	header("location:profile");
 }
 ?>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@ if(isset($_SESSION["uid"])){
 				</div>
 			</li>
 			
-			<li><a href="customer_registration.php"><span class="glyphicon glyphicon-user"></span>SignUp</a></li>
+			<li><a href="customer_registration.php"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
 						<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>SignIn</a>
 							<ul class="dropdown-menu">
 								<div style="width:300px;">
@@ -104,8 +104,8 @@ if(isset($_SESSION["uid"])){
 										<div class="form-group">
 											<div class="row">
 												<div class="col-xs-7">
-													<a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
-													<a href="/commerce/admin" tabindex="5" class="forgot-password">Admin?</a>
+													<a href="#" tabindex="5" class="forgot-password"><font color="red">Forgot Password?</font></a>
+													<a href="admin/" tabindex="5" class="forgot-password"><font color="black">Admin?</font></a>
 												</div>
 												<div class="col-xs-4 pull-right">
 													<input type="submit" class="btn btn-info" value="Log In">

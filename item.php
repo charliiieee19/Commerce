@@ -22,8 +22,8 @@
 
 		.zoom img::selection { background-color: white; }
 	</style>
-	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
-	<script src='jquery.zoom.js'></script>
+	<script src='js/jquery.min.js'></script>
+	<script src='js/jquery.zoom.js'></script>
 	<script>
 		$(document).ready(function(){
 			$('#ex1_<?php echo $row['product_id']; ?>').zoom();

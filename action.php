@@ -36,7 +36,7 @@ if(isset($_POST["brand"])){
 		echo "</div>";
 	}
 }
-if(isset($_POST["page"])){
+if(isset($_POST["pages"])){
 	$sql = "SELECT * FROM products order by 3";
 	$run_query = mysqli_query($con,$sql);
 	$count = mysqli_num_rows($run_query);
@@ -56,7 +56,7 @@ if(isset($_POST["getProduct"])){
 	}else{
 		$start = 0;
 	}
-	$product_query = "SELECT * FROM products order by 3 LIMIT $start,$limit";
+	$product_query = "SELECT * FROM products order by 3";
 	$run_query = mysqli_query($con,$product_query);
 	if(mysqli_num_rows($run_query) > 0){
 		while($row = mysqli_fetch_array($run_query)){
@@ -86,31 +86,26 @@ if(isset($_POST["getProduct"])){
 	}
 }
 if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isset($_POST["search"])){
-	$limit = 9;
-	if(isset($_POST["setPage"])){
-		$pageno = $_POST["pageNumber"];
-		$start = ($pageno * $limit) - $limit;
-	}else{
-		$start = 0;
-	}
+	
 
 	if(isset($_POST["get_seleted_Category"])){
+			$limit = 9;
+			if(isset($_POST["setPageCat"])){
+				$pageno = $_POST["pageNumberCat"];
+				$start = ($pageno * $limit) - $limit;
+			}else{
+				$start = 0;
+			}
+
 		$id = $_POST["cat_id"];
-		$sql = "SELECT * FROM products WHERE product_cat = '$id' order by 3 LIMIT $start,$limit";
-		/*$run_query = mysqli_query($con,$sql);
-		$count = mysqli_num_rows($run_query);
-		$pageno = ceil($count/9);
-		for($i=1;$i<=$pageno;$i++){
-			echo "
-				<li><a page='$i' id='page'>$i</a></li>
-			";
-		}*/
+		$sql = "SELECT * FROM products WHERE product_cat = '$id' order by 3";
+		
 	}else if(isset($_POST["selectBrand"])){
 		$id = $_POST["brand_id"];
-		$sql = "SELECT * FROM products WHERE product_brand = '$id' order by 3 LIMIT $start,$limit";
+		$sql = "SELECT * FROM products WHERE product_brand = '$id' order by 3";
 	}else{
 		$keyword = $_POST["keyword"];
-		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%' order by 3 LIMIT $start,$limit";
+		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%' order by 3";
 	}
 	
 	$run_query = mysqli_query($con,$sql);
@@ -259,7 +254,7 @@ if (isset($_POST["Common"])) {
 				
 			}
 			?>
-				<a style="float:right;" href="cart.php" class="btn btn-warning">Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span></a>
+				<a style="float:right;" href="cart" class="btn btn-warning">Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span></a>
 			<?php
 			exit();
 		}
@@ -293,10 +288,28 @@ if (isset($_POST["Common"])) {
 								<input type="hidden" name="" value="'.$cart_item_id.'"/>
 								<div class="col-md-2"><img class="img-responsive" src="product_images/'.$product_image.'"></div>
 								<div class="col-md-2">'.$product_title.'</div>
-								<div class="col-md-2"><input type="text" class="form-control qty" value="'.$qty.'" ></div>
+								<div class="col-md-2"><input type="number" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"  type="number" maxlength="3" min="1" max="999" class="form-control qty" value="'.$qty.'" ></div>
 								<div class="col-md-2"><input type="text" class="form-control price" value="'.$product_price.'" readonly="readonly"></div>
 								<div class="col-md-2"><input type="text" class="form-control total" value="'.$product_price.'" readonly="readonly"></div>
-							</div>';
+							</div>
+							<script>
+							  function maxLengthCheck(object) {
+							    if (object.value.length > object.maxLength)
+							      object.value = object.value.slice(0, object.maxLength)
+							  }
+							    
+							  function isNumeric (evt) {
+							    var theEvent = evt || window.event;
+							    var key = theEvent.keyCode || theEvent.which;
+							    key = String.fromCharCode (key);
+							    var regex = /[0-9]|\./;
+							    if ( !regex.test(key) ) {
+							      theEvent.returnValue = false;
+							      if(theEvent.preventDefault) theEvent.preventDefault();
+							    }
+							  }
+							</script>';
+
 				}
 				
 				echo '<div class="row">

@@ -1,8 +1,7 @@
 <?php
-
 session_start();
 if(!isset($_SESSION["uid"])){
-	header("location:index.php");
+	header("location:index");
 }
 ?>
 <!DOCTYPE html>
@@ -28,12 +27,12 @@ if(!isset($_SESSION["uid"])){
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="/commerce" class="navbar-brand">PcBay</a>
+				<a href="profile" class="navbar-brand">PcBay</a>
 			</div>
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
+				<li><a href="profile"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+				<li><a href="profile"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
 				<li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" id="search"></li>
 				<li style="top:10px;left:15px;"><button class="btn btn-primary" id="search_btn"><span class="glyphicon glyphicon-search" ></span></button></li>
 			</ul>

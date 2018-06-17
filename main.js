@@ -39,7 +39,17 @@ $(document).ready(function(){
 			}
 		})
 	}
-	
+	pageCat();
+	function pageCat(){
+		$.ajax({
+			url	:	"action.php",
+			method	:	"POST",
+			data	:	{pageCat:1},
+			success	:	function(data){
+				$("#pageno").html(data);
+			}
+		})
+	}
 	/*	when page is load successfully then there is a list of categories when user click on category we will get category id and 
 		according to id we will show products
 		*/
@@ -53,6 +63,7 @@ $(document).ready(function(){
 				method	:	"POST",
 				data	:	{get_seleted_Category:1,cat_id:cid},
 				success	:	function(data){
+					pageCat();
 					$("#get_product").html(data);
 					if($("body").width() < 480){
 						$("body").scrollTop(683);
@@ -122,9 +133,9 @@ $(document).ready(function(){
 			data	:$("#login").serialize(),
 			success	:function(data){
 				if(data == "login_success"){
-					window.location.href = "profile.php";
+					window.location.href = "profile";
 				}else if(data == "cart_login"){
-					window.location.href = "cart.php";
+					window.location.href = "cart";
 				}else{
 					$("#e_msg").html(data);
 					$(".overlay").hide();
