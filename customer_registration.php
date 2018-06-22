@@ -22,8 +22,8 @@
 				<a href="/commerce" class="navbar-brand">PcBay</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="/commerce"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-				<li><a href="/commerce"><span class="glyphicon glyphicon-modal-window"></span> Product</a></li>
+				<li><a href="index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+				<li><a href="index"><span class="glyphicon glyphicon-modal-window"></span> Product</a></li>
 			</ul>
 		</div>
 	</div>

@@ -27,12 +27,12 @@ if(isset($_SESSION["uid"])){
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="/commerce" class="navbar-brand">PcBay</a>
+				<a href="" onclick="window.location.reload(true);" class="navbar-brand">PcBay</a>
 			</div>
 			<div class="collapse navbar-collapse" id="collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="/commerce"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-					<li><a href="/commerce"><span class="glyphicon glyphicon-modal-window"></span> Product</a></li>
+					<li><a href="" onclick="window.location.reload(true);"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					<li><a href="" onclick="window.location.reload(true);"><span class="glyphicon glyphicon-modal-window"></span> Product</a></li>
 					<li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" id="search"></li>
 					<li style="top:10px;left:15px"><button class="btn btn-primary" id="search_btn"><span class="glyphicon glyphicon-search"></span></button></li>
 				</ul>
@@ -105,7 +105,7 @@ if(isset($_SESSION["uid"])){
 											<div class="row">
 												<div class="col-xs-7">
 													<a href="#" tabindex="5" class="forgot-password"><font color="red">Forgot Password?</font></a>
-													<a href="admin/" tabindex="5" class="forgot-password"><font color="black">Admin?</font></a>
+													<a href="admins/" tabindex="5" class="forgot-password"><font color="black">Admin?</font></a>
 												</div>
 												<div class="col-xs-4 pull-right">
 													<input type="submit" class="btn btn-info" value="Log In">
@@ -161,6 +161,15 @@ if(isset($_SESSION["uid"])){
 					<div class='dropdown-menu' aria-labelledby='dropdownMenuButton' id="get_brand">
 					</div>
 				</div>
+				<br>
+				<div class='dropdown'>
+					<button class='btn btn-primary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+						Sort By <span class="caret"></span>
+					</button>
+					<div class='dropdown-menu' aria-labelledby='dropdownMenuButton' id="sorterer">
+						
+					</div>
+				</div>
 				<!-- <div id="get_brand">
 				</div> -->
 				<!--<div class="nav nav-pills nav-stacked">
@@ -171,7 +180,7 @@ if(isset($_SESSION["uid"])){
 					<li><a href="#">Categories</a></li>
 				</div> -->
 			</div>
-			<div class="col-md-8 col-xs-12">
+			<div class="col-md-9 col-xs-9">
 				<div class="row">
 					<div class="col-md-12 col-xs-12" id="product_msg">
 					</div>
@@ -252,6 +261,15 @@ if(isset($_SESSION["uid"])){
 	    	document.onmouseup=clickNS;document.oncontextmenu=clickIE;
 	    } 
 	    document.oncontextmenu=new Function("return false");
+
+
+	    var input = document.getElementById("search");
+	    input.addEventListener("keyup", function(event) {
+	    	event.preventDefault();
+	    	if (event.keyCode === 13) {
+	    		document.getElementById("search_btn").click();
+	    	}
+	    });
 	</script>
 </body>
 </html>

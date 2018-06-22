@@ -109,6 +109,15 @@ if(!isset($_SESSION["uid"])){
 				  <div class='dropdown-menu' aria-labelledby='dropdownMenuButton' id="get_brand">
 				  </div>
 				</div>
+				<br>
+				<div class='dropdown'>
+					<button class='btn btn-primary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+						Sort By <span class="caret"></span>
+					</button>
+					<div class='dropdown-menu' aria-labelledby='dropdownMenuButton' id="sorterer">
+						
+					</div>
+				</div>
 				<!-- <div id="get_brand">
 				</div> -->
 				<!--<div class="nav nav-pills nav-stacked">

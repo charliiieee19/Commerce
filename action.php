@@ -19,6 +19,24 @@ if(isset($_POST["category"])){
 		echo "</div>";
 	}
 }
+if(isset($_POST["sort"])){
+	$sort_query = "SELECT * FROM sort";
+	$run_query = mysqli_query($con,$sort_query);
+	echo "
+		
+	";
+	if(mysqli_num_rows($run_query) > 0){
+		while($row = mysqli_fetch_array($run_query)){
+			$sid = $row["sort_id"];
+			$sort_title = $row["sort_title"];
+			echo "
+					<li><a href='#' class='$sid'>$sort_title</a></li>
+			";
+		}
+		echo "</div>";
+	}
+}
+
 if(isset($_POST["brand"])){
 	$brand_query = "SELECT * FROM brands";
 	$run_query = mysqli_query($con,$brand_query);
@@ -56,7 +74,7 @@ if(isset($_POST["getProduct"])){
 	}else{
 		$start = 0;
 	}
-	$product_query = "SELECT * FROM products order by 3";
+	$product_query = "SELECT * FROM products order by products.product_title";
 	$run_query = mysqli_query($con,$product_query);
 	if(mysqli_num_rows($run_query) > 0){
 		while($row = mysqli_fetch_array($run_query)){
@@ -85,27 +103,28 @@ if(isset($_POST["getProduct"])){
 		}
 	}
 }
-if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isset($_POST["search"])){
+///////////
+
+if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isset($_POST["search"]) || isset($_POST["name_desc"])||isset($_POST["name_asc"])||isset($_POST["price_desc"])||isset($_POST["price_asc"]) ){
 	
 
 	if(isset($_POST["get_seleted_Category"])){
-			$limit = 9;
-			if(isset($_POST["setPageCat"])){
-				$pageno = $_POST["pageNumberCat"];
-				$start = ($pageno * $limit) - $limit;
-			}else{
-				$start = 0;
-			}
-
 		$id = $_POST["cat_id"];
-		$sql = "SELECT * FROM products WHERE product_cat = '$id' order by 3";
-		
+		$sql = "SELECT * FROM products WHERE product_cat = '$id' order by products.product_title";
 	}else if(isset($_POST["selectBrand"])){
 		$id = $_POST["brand_id"];
-		$sql = "SELECT * FROM products WHERE product_brand = '$id' order by 3";
+		$sql = "SELECT * FROM products WHERE product_brand = '$id' order by products.product_title";
+	}else if(isset($_POST["name_asc"])){
+		$sql = "SELECT * FROM products order by products.product_title ASC";
+	}else if(isset($_POST["name_desc"])){
+		$sql = "SELECT * FROM products order by products.product_title DESC";
+	}else if(isset($_POST["price_asc"])){
+		$sql = "SELECT * FROM products order by products.product_price ASC";
+	}else if(isset($_POST["price_desc"])){
+		$sql = "SELECT * FROM products order by products.product_price DESC";
 	}else{
 		$keyword = $_POST["keyword"];
-		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%' order by 3";
+		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%' order by products.product_title";
 	}
 	
 	$run_query = mysqli_query($con,$sql);
@@ -117,8 +136,9 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 			$pro_price = $row['product_price'];
 			$pro_image = $row['product_image'];
 			$pro_details = $row['product_detail'];
-			echo "
-				<div class='col-md-4'>
+			echo 
+			"
+					<div class='col-lg-4'>
 							<div class='panel panel-info'>
 								<div class='panel-heading'>$pro_title</div>
 								<div class='panel-body'>
@@ -129,7 +149,8 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 									<a href='#view_".$row['product_id']."' class='btn btn-info btn-xs' style='float:right;' data-toggle='modal'>Details</a>
 								</div>
 							</div>
-						</div>
+					</div>
+				
 			";
 			include('item.php');
 		}

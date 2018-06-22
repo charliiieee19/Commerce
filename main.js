@@ -1,10 +1,21 @@
 $(document).ready(function(){
-	/*Disable Keys*/
 	
+	sorterer();
 	cat();
 	brand();
 	product();
-	
+	//sort() is a function thats not working
+	function sorterer(){
+		$.ajax({
+			url	:	"action.php",
+			method:	"POST",
+			data	:	{sort:1},
+			success	:	function(data){
+				$("#sorterer").html(data);
+				
+			}
+		})
+	}
 	//cat() is a funtion fetching category record from database whenever page is load
 	function cat(){
 		$.ajax({
@@ -39,17 +50,8 @@ $(document).ready(function(){
 			}
 		})
 	}
-	pageCat();
-	function pageCat(){
-		$.ajax({
-			url	:	"action.php",
-			method	:	"POST",
-			data	:	{pageCat:1},
-			success	:	function(data){
-				$("#pageno").html(data);
-			}
-		})
-	}
+	
+	
 	/*	when page is load successfully then there is a list of categories when user click on category we will get category id and 
 		according to id we will show products
 		*/
@@ -63,7 +65,79 @@ $(document).ready(function(){
 				method	:	"POST",
 				data	:	{get_seleted_Category:1,cat_id:cid},
 				success	:	function(data){
-					pageCat();
+					$("#get_product").html(data);
+					if($("body").width() < 480){
+						$("body").scrollTop(683);
+					}
+				}
+			})
+
+		})
+		//
+		$("body").delegate(".1","click",function(event){
+			$("#get_product").html("<h3>Sorting...</h3>");
+			event.preventDefault();
+			var sid = $(this).attr('sid');
+
+			$.ajax({
+				url		:	"action.php",
+				method	:	"POST",
+				data	:	{name_asc:1},
+				success	:	function(data){
+					$("#get_product").html(data);
+					if($("body").width() < 480){
+						$("body").scrollTop(683);
+					}
+				}
+			})
+
+		})
+		$("body").delegate(".2","click",function(event){
+			$("#get_product").html("<h3>Sorting...</h3>");
+			event.preventDefault();
+			var sid = $(this).attr('sid');
+
+			$.ajax({
+				url		:	"action.php",
+				method	:	"POST",
+				data	:	{name_desc:1},
+				success	:	function(data){
+					$("#get_product").html(data);
+					if($("body").width() < 480){
+						$("body").scrollTop(683);
+					}
+				}
+			})
+
+		})
+		$("body").delegate(".3","click",function(event){
+			$("#get_product").html("<h3>Sorting...</h3>");
+			event.preventDefault();
+			var sid = $(this).attr('sid');
+
+			$.ajax({
+				url		:	"action.php",
+				method	:	"POST",
+				data	:	{price_asc:1},
+				success	:	function(data){
+					$("#get_product").html(data);
+					if($("body").width() < 480){
+						$("body").scrollTop(683);
+					}
+				}
+			})
+
+		})
+		$("body").delegate(".4","click",function(event){
+			$("#get_product").html("<h3>Sorting...</h3>");
+			event.preventDefault();
+			var sid = $(this).attr('sid');
+
+			$.ajax({
+				url		:	"action.php",
+				method	:	"POST",
+				data	:	{price_desc:1},
+				success	:	function(data){
 					$("#get_product").html(data);
 					if($("body").width() < 480){
 						$("body").scrollTop(683);
@@ -93,6 +167,9 @@ $(document).ready(function(){
 			})
 
 		})
+		//////
+		
+		
 	/*
 		At the top of page there is a search box with search button when user put name of product then we will take the user 
 		given string and with the help of sql query we will match user given string to our database keywords column then matched product 
